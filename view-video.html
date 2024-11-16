@@ -1,0 +1,32 @@
+<html>
+	<body oncontextmenu="false">
+		<style>
+.video {
+	width: 100%;
+}
+		</style>
+		<button onclick="toggleVideo()">Toggle</button>
+		<video id="video" class="video" controls autoplay controlslist="nodownload">
+			<source id="video-source" />
+		</video>
+		<script>
+			const [userId, videoId] = window.location.hash.slice(1).split(',')
+			const video = document.getElementById('video')
+			const source = document.getElementById('video-source')
+
+			video.pause()
+			source.src = `https://tesfatravel.com/general/view?userId=${userId}&videoId=${videoId}`
+			source.setAttribute('type', 'video/mp4')
+			video.load()
+			video.play()
+
+			function toggleVideo() {
+				if(video.paused)
+					video.play()
+				else 
+					video.pause()
+			}
+
+		</script>
+	</body>
+</html>
